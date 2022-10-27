@@ -3,10 +3,14 @@
 import numpy as np
 import numpy.testing as npt
 import pytest
+from inflammation.models import daily_mean
+from inflammation.models import daily_min
+from inflammation.models import daily_max
+from inflammation.models import patient_normalise
 
 def test_daily_mean_zeros():
     """Test that mean function works for an array of zeros."""
-    from inflammation.models import daily_mean
+
 
     test_input = np.array([[0, 0],
                            [0, 0],
@@ -19,7 +23,6 @@ def test_daily_mean_zeros():
 
 def test_daily_mean_integers():
     """Test that mean function works for an array of positive integers."""
-    from inflammation.models import daily_mean
 
     test_input = np.array([[1, 2],
                            [3, 4],
@@ -38,7 +41,7 @@ def test_daily_mean_integers():
                 ])
 def test_daily_min(test,expected):
     """Test the min function works for an array of zeros"""
-    from inflammation.models import daily_min
+
 
     npt.assert_array_equal(daily_min(np.array(test)),np.array(expected))
     '''test_input = np.array([[0,0],
@@ -57,7 +60,7 @@ def test_daily_min(test,expected):
                 )
 def test_daily_max(test,expected):
     """Test the min function works for an array of zeros"""
-    from inflammation.models import daily_max
+
 
     npt.assert_array_equal(daily_max(np.array(test)),np.array(expected))
 
@@ -107,7 +110,7 @@ def test_patient_normalise_simple(test, expected):
     ])
 def test_patient_normalise(test, expected, expect_raises):
     """Test normalisation works for arrays of one and positive integers."""
-    from inflammation.models import patient_normalise
+
     if isinstance(test, list):
        test = np.array(test)
     if expect_raises is not None:
